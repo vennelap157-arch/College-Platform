@@ -18,7 +18,7 @@ function CompareContent() {
     if (idList.length > 3) { setError('Maximum 3 colleges only'); return; }
     setError('');
     setLoading(true);
-    const res = await fetch(`http://localhost:5000/compare?ids=${ids}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/compare?ids=${ids}`);
     const data = await res.json();
     if (data.error) { setError(data.error); setLoading(false); return; }
     setColleges(data);
